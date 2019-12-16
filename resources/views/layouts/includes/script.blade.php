@@ -1,25 +1,36 @@
-        <!-- jQuery  -->
-        <script src="{{asset('assets/js/jquery.min.js')}}"></script>
-        <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('assets/js/jquery.slimscroll.js')}}"></script>
-        <script src="{{asset('assets/js/waves.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
-                
-        <!--Morris Chart-->
-        <script src="{{asset('assets/plugins/morris/morris.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/raphael/raphael-min.js')}}"></script>
-        <script src="{{asset('assets/pages/dashboard.js')}}"></script>
+        <!-- BEGIN VENDOR JS-->
+        <script src="{{asset('app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
+        <!-- BEGIN VENDOR JS-->        
+        
+        <!-- BEGIN PAGE VENDOR JS-->
+        <script src="{{asset('app-assets/vendors/js/charts/chart.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/vendors/js/charts/raphael-min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/vendors/js/charts/morris.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/data/jvector/visitor-data.js')}}" type="text/javascript"></script>
 
-        <!-- Plugins js -->
-        <script src="{{asset('assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
-        <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js')}}"></script>
-        <!-- Plugins Init js -->
-        <script src="{{asset('assets/pages/form-advanced.js')}}"></script>
-        
-        <!-- App js -->
-        <script src="{{asset('assets/js/app.js')}}"></script>        
-        
+        <script src="{{asset('app-assets/vendors/js/tables/jquery.dataTables.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.rowReorder.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/vendors/js/forms/icheck/icheck.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/vendors/js/forms/select/select2.full.min.js')}}" type="text/javascript"></script>
+        <!-- END PAGE VENDOR JS-->
+
+        <!-- BEGIN MODERN JS-->
+        <script src="{{asset('app-assets/js/core/app-menu.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/js/core/app.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/js/scripts/customizer.js')}}" type="text/javascript"></script>
+        <!-- END MODERN JS-->
+
+        <!-- BEGIN PAGE LEVEL JS-->
+        <script src="{{asset('app-assets/js/scripts/pages/dashboard-sales.js')}}" type="text/javascript"></script>
+
+        <script src="{{asset('app-assets/js/scripts/pages/users-contacts.js')}}" type="text/javascript"></script>
+        <script src="{{asset('app-assets/js/scripts/forms/select/form-select2.js')}}" type="text/javascript"></script>
+        <!-- END PAGE LEVEL JS-->
+</body>
+
+
+</body>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Account;
 use App\Bet;
 use App\BetDetail;
 use App\Event;
@@ -21,8 +22,7 @@ class BetController extends Controller
 
     public function index()
     {
-        $bookmakers = Bookmaker::where([
-            'user_id' => Auth::user()->id,
+        $accounts = Account::where([
             'status' => 'Active'
         ])->get();
 
@@ -41,8 +41,8 @@ class BetController extends Controller
         $registers = Bet::where([
             'user_id' => Auth::user()->id,
             'status' => 'Active'
-        ])->get();
-        return view('bets.index',compact('registers','bookmakers','competitions','marketplaces','sports'));
+        ])->paginate(6);
+        return view('bets.index',compact('registers','accounts','competitions','marketplaces','sports'));
     }
 
     public function create()
@@ -55,7 +55,7 @@ class BetController extends Controller
         $register = new Bet;
         $register->user_id              = $request->user_id;
         $register->status               = 'Active';
-        $register->bookmaker_id         = $request->bookmaker_id;
+        $register->account_id           = $request->account_id;
         $register->value_profit         = $request->value_profit;
         $register->value_bet            = $request->value_bet;
         $register->date_bet             = $request->date_event; 
@@ -74,11 +74,11 @@ class BetController extends Controller
         $registerDetail->marketplace_id  = $request->marketplace_id;
         $registerDetail->odd             = $request->odd;
         //$registerDetail->status_bet      = $request->status_bet;
-        $registerDetail->status          = 'Active'; 
+        $registerDetail->status          = 'Active';
         $registerDetail->date_bet        = $request->date_event;           
 
-        $query = Bookmaker::where([
-            'id' => $request->bookmaker_id
+        $query = Account::where([
+            'id' => $request->account_id
         ]);
 
         $query->increment('balance', $request->value_profit);

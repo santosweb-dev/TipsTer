@@ -25,6 +25,11 @@
                 </div>
             </div>-->
         </div>
+        @if(session()->get('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}  
+            </div><br />
+        @endif
         <div class="content-body">
             <section class="row">
                 <div class="col-12">
@@ -55,9 +60,51 @@
                             <div class="card-body">
                                 <!-- table -->
                                 <div class="table-responsive">
-                                    <table id="users-contacts" class="table table-white-space table-bordered row-grouping display no-wrap icheck table-middle">
-                                       
-                                    </table>
+                                    @if ($registers->count())
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ __('Banca') }}</th>
+                                                    <th>{{ __('Usuário') }}</th>
+                                                    <th>{{ __('Saldo') }}</th>
+                                                    <th>{{ __('Ação') }}</th>
+                                                </tr>
+                                            </thead>
+                                            @foreach ($registers as $register)                                                
+                                                <tr>
+                                                    <td>
+                                                        <div class="media">
+                                                            <div class="media-left pr-1">
+                                                                <span class="avatar avatar-sm avatar-online rounded-circle">
+                                                                    <img src="{{asset('storage/banca/'.$register->bookmaker->avatar)}}" alt="avatar"><i></i>
+                                                                </span>
+                                                            </div>
+                                                            <div class="media-body media-middle">
+                                                                <a href="#" style="color:gray" class="media-heading">{{$register->bookmaker->name}}</a>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                    </td>
+                                                    <td>{{ $register->user_name_bookmaker }}</td>
+                                                    <td>R$ {{ number_format($register->balance, 2, ',', '.')}}</td>
+                                                    <td>
+                                                        <a data-tt="tooltip" data-placement="top" title="" href="#" data-original-title="Editar" class="table-action-btn" data-toggle="modal" data-original-title="Editar" data-target="#ModalEdit"
+                                                            data-whateverid="{{$register->id}}"><i class="ft-edit-2"></i>
+                                                        </a>
+                                                        <a data-tt="tooltip" data-placement="top" title="" href="#" data-original-title="Excluir" class="table-action-btn" data-toggle="modal" title="Excluir" data-target="#ModalDelete"
+                                                            data-whateverid="{{$register->id}}"><i class="ft-trash-2" style="color: #ED3237"></i>
+                                                        </a>  
+                                                    </td>
+                                                    @include ('bookmakers.modal.delete')
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                    @else
+                                        <h4><center>Não encontramos Nenhum registro</center></h4><br><br><br>
+                                        <div class="col-md-12">
+                                            <a href="#" style="color:black"><input type="button" value="Voltar" class="btn btn-white"></a>
+                                        </div>                                          
+                                    @endif
                                 </div>
                                 <!--/ table -->
                             </div>
@@ -68,6 +115,20 @@
         </div>
     </div>
 </div>
+
+@include ('bookmakers.modal.create')
+
+<script src="{{asset('app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
+
+<!-- SCRIPT MODAL DELETE -->
+<script type="text/javascript">
+    $('#ModalDelete').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('whateverid')
+        var modal = $(this)
+        modal.find('#id-input').val(id)
+    })
+</script>
 
 @endsection
 

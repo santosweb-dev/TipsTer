@@ -55,9 +55,41 @@
                             <div class="card-body">
                                 <!-- table -->
                                 <div class="table-responsive">
-                                    <table id="users-contacts" class="table table-white-space table-bordered row-grouping display no-wrap icheck table-middle">
-                                       
-                                    </table>
+                                    @if ($registers->count())
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ __('Data') }}</th>
+                                                    <th>{{ __('Valor') }}</th>
+                                                    <th>{{ __('Ação') }}</th>
+                                                </tr>
+                                            </thead>
+                                            @foreach ($registers as $register)
+                                                <tr>
+                                                    <td>{{ date("d/m/Y", strtotime($register->date)) }}</td>
+                                                    <td>R$ {{ number_format($register->value, 2, ',', '.')}}</td>
+                                                    <td>
+                                                        <a data-tt="tooltip" data-placement="top" title="" href="#" data-original-title="Editar" class="table-action-btn" data-toggle="modal" data-original-title="Editar" data-target="#ModalEdit"
+                                                            data-whateverid="{{$register->id}}"><i class="ft-edit-2"></i>
+                                                        </a>
+                                                        <a data-tt="tooltip" data-placement="top" title="" href="#" data-original-title="Excluir" class="table-action-btn" data-toggle="modal" title="Excluir" data-target="#ModalDelete"
+                                                            data-whateverid="{{$register->id}}"><i class="ft-trash-2" style="color: #ED3237"></i>
+                                                        </a>  
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                        <div class="table-pagination pull-right">
+                                            <div class="col-md-12">
+                                                {{ $registers->links('layouts.includes.pagination', ['pagination' => $registers]) }}
+                                            </div>
+                                        </div>
+                                    @else
+                                        <h4><center>Não encontramos Nenhum registro</center></h4><br><br><br>
+                                        <div class="col-md-12">
+                                            <a href="#" style="color:black"><input type="button" value="Voltar" class="btn btn-white"></a>
+                                        </div>                                          
+                                    @endif
                                 </div>
                                 <!--/ table -->
                             </div>
@@ -68,6 +100,8 @@
         </div>
     </div>
 </div>
+
+@include ('deposit.modal.create')
 
 @endsection
 

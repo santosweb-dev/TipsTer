@@ -8,7 +8,7 @@
                 <span class="menu-title" data-i18n="nav.dash.main">{{ __('Apostas') }}</span></a>
             </li>
             <li class=" nav-item"><a href="{{route('bancas.index')}}"><i class="la la-bank"></i>
-                <span class="menu-title" data-i18n="nav.dash.main">{{ __('Casas de Apostas') }}</span></a>
+                <span class="menu-title" data-i18n="nav.dash.main">{{ __('Bancas') }}</span></a>
             </li>
             <!--<li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">Templates</span></a>
                 <ul class="menu-content">

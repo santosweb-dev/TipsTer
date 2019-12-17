@@ -40,7 +40,7 @@
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#"><i class="ft-user"></i> {{ __('Editar Perfil') }}</a>
+                            <a class="dropdown-item" href="{{route('perfil.index')}}"><i class="ft-user"></i> {{ __('Editar Perfil') }}</a>
                             <!--<a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
                             <a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a>
                             <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>-->

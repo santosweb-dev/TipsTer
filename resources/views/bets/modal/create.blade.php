@@ -15,10 +15,10 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Banca*</label>
-                                    <select class="form-control" name="bookmaker_id">
-                                        @foreach($bookmakers as $bookmaker)
-                                            <option value="{{ $bookmaker->id }}">{{ $bookmaker->name }}</option>
-                                        @endforeach   
+                                    <select class="form-control" name="account_id">
+                                        @foreach($accounts as $account)
+                                            <option value="{{ $account->id }}">{{ $account->bookmaker->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

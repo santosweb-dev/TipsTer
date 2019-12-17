@@ -3,80 +3,68 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Transaction;
+use App\Account;
 
 class DepositController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
-    {
-        //
+    {   
+        $accounts = Account::where([
+            'status' => 'Active'
+        ])->get();
+        
+        $registers = Transaction::where([
+            'status' => 'Active'
+        ])->paginate(5);
+        return view('deposit.index', compact('registers','accounts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $register = new Transaction;
+        $register->user_id              = $request->user_id;
+        $register->account_id           = $request->account_id;
+        $register->value                = $request->value;
+        $register->date                 = $request->date;
+        $register->type                 = $request->type;
+        $register->status               = 'Active';
+        $register->save();
+
+        $query = Account::where([
+            'id' => $request->account_id
+        ]);
+
+        $query->increment('balance', $request->balance);
+
+        if ($register->save()) {
+            $request->session()->flash('success', 'Depósito realizado com sucesso!');
+        } else {
+            $request->session()->flash('error', 'Erro ao fazer o depósito');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

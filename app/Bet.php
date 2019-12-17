@@ -13,6 +13,11 @@ class Bet extends Model
         return $this->hasMany('App\BetDetail');
     }
 
+    public function account()
+    {
+        return $this->hasMany('App\Account');
+    }
+
     public function bookmaker()
     {
         return $this->belongsTo('App\Bookmaker', 'bookmaker_id', 'id');

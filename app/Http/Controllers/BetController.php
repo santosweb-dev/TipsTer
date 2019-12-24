@@ -41,25 +41,45 @@ class BetController extends Controller
         $registers = Bet::where([
             'user_id' => Auth::user()->id,
             'status' => 'Active'
-        ])->paginate(6);
+        ])->orderBy('date_bet', 'desc')->paginate(10);
         return view('bets.index',compact('registers','accounts','competitions','marketplaces','sports'));
-    }
-
-    public function create()
-    {
-        //
     }
 
     public function store(Request $request)
     {
-        $register = new Bet;
-        $register->user_id              = $request->user_id;
-        $register->status               = 'Active';
-        $register->account_id           = $request->account_id;
-        $register->value_profit         = $request->value_profit;
-        $register->value_bet            = $request->value_bet;
-        $register->date_bet             = $request->date_event; 
-        $register->save();
+        if ($request->value_profit < 0 )
+        {
+            $register = new Bet;
+            $register->user_id              = $request->user_id;
+            $register->status               = 'Active';
+            $register->account_id           = $request->account_id;
+            $register->value_profit         = $request->value_profit;
+            $register->value_bet            = $request->value_bet;
+            $register->status_bet           = 'Lose';
+            $register->date_bet             = $request->date_event; 
+            $register->save();
+        } else if ($request->value_profit > 0 )
+        {
+            $register = new Bet;
+            $register->user_id              = $request->user_id;
+            $register->status               = 'Active';
+            $register->account_id           = $request->account_id;
+            $register->value_profit         = $request->value_profit;
+            $register->value_bet            = $request->value_bet;
+            $register->status_bet           = 'Win';
+            $register->date_bet             = $request->date_event; 
+            $register->save();
+        } else {
+            $register = new Bet;
+            $register->user_id              = $request->user_id;
+            $register->status               = 'Active';
+            $register->account_id           = $request->account_id;
+            $register->value_profit         = $request->value_profit;
+            $register->value_bet            = $request->value_bet;
+            $register->status_bet           = 'Return';
+            $register->date_bet             = $request->date_event; 
+            $register->save();
+        }
 
         $registerEvent = new Event;
         $registerEvent->name            = $request->name;
@@ -83,7 +103,7 @@ class BetController extends Controller
 
         $query->increment('balance', $request->value_profit);
 
-        $registerDetail->save(); 
+        $registerDetail->save();
 
         if ($registerDetail->save()) {
             $request->session()->flash('success', 'Aposta feita com sucesso!');
@@ -100,17 +120,7 @@ class BetController extends Controller
         return view('bets.historic',compact('registers'));
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
     public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
     {
         //
     }

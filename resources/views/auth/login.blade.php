@@ -7,9 +7,9 @@
         <title>TipsTer - Login</title>
         <meta content="Admin Dashboard" name="description"><meta content="Themesbrand" name="author">
         <link rel="shortcut icon" href="assets/images/favicon.ico">
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+        <link href="{{asset('app-assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('app-assets/css/icons.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('app-assets/css/style.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body>
         <!-- Begin page -->
@@ -19,7 +19,7 @@
 
                     <h3 class="text-center m-0">
                         <a href="index.html" class="logo logo-admin">
-                            <img src="assets/images/logo.png" height="30" alt="logo">
+                            <img src="{{asset('app-assets/images/logo/logo.png')}}" height="30" alt="logo">
                         </a>
                     </h3>
 

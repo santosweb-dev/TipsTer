@@ -1,6 +1,6 @@
 ## Sobre TipsTer
 
-
+O Tipster é um sistema gerenciamento de Banca de Apostas Esportivas
 
 ## Expecificações
 

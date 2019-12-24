@@ -74,19 +74,18 @@
                                                 <tr>
                                                     <td>
                                                         <div class="media">
-                                                            <div class="media-left pr-1">
+                                                            <a data-toggle="tooltip" data-original-title="Visualizar" href="{{ route('bancas.show', $register->id) }}" style="color:gray"><div class="media-left pr-1">
                                                                 <span class="avatar avatar-sm avatar-online rounded-circle">
                                                                     <img src="{{asset('storage/banca/'.$register->bookmaker->avatar)}}" alt="avatar"><i></i>
                                                                 </span>
-                                                            </div>
+                                                            </div></a>
                                                             <div class="media-body media-middle">
-                                                                <a href="#" style="color:gray" class="media-heading">{{$register->bookmaker->name}}</a>
+                                                                <a data-toggle="tooltip" data-original-title="Visualizar" href="{{ route('bancas.show', $register->id) }}" style="color:gray">{{$register->bookmaker->name}}</a>
                                                             </div>
-                                                        </div>
-                                                    
+                                                        </div>                                                    
                                                     </td>
-                                                    <td>{{ $register->user_name_bookmaker }}</td>
-                                                    <td>R$ {{ number_format($register->balance, 2, ',', '.')}}</td>
+                                                    <td><a data-toggle="tooltip" data-original-title="Visualizar" href="{{ route('bancas.show', $register->id) }}" style="color:gray">{{ $register->user_name_bookmaker }}</a></td>
+                                                    <td><a data-toggle="tooltip" data-original-title="Visualizar" href="{{ route('bancas.show', $register->id) }}" style="color:gray">R$ {{ number_format($register->balance, 2, ',', '.')}}</a></td>
                                                     <td>
                                                         <a data-tt="tooltip" data-placement="top" title="" href="#" data-original-title="Editar" class="table-action-btn" data-toggle="modal" data-original-title="Editar" data-target="#ModalEdit"
                                                             data-whateverid="{{$register->id}}"><i class="ft-edit-2"></i>

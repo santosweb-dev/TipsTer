@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Account;
 use App\Bookmaker;
+use App\Bet;
 
 class BookmakerController extends Controller
 {
@@ -47,7 +49,16 @@ class BookmakerController extends Controller
 
     public function show($id)
     {
-        //
+        $registers = Bet::where([
+            'user_id' => Auth::user()->id,
+            'status' => 'Active'
+        ])->orderBy('date_bet', 'desc')->paginate(6);
+
+        $bookmakers = Bookmaker::where([
+            'status' => 'Active'
+        ])->get();
+
+        return view('bookmakers.historic', compact('registers','bookmakers'));
     }
 
     public function update(Request $request, $id)

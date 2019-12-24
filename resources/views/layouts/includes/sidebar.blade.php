@@ -105,15 +105,11 @@
             </li>
             <li class=" nav-item"><a href="#"><i class="la la-file-text"></i><span class="menu-title" data-i18n="nav.navbars.main">{{ __('Relatórios') }}</span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="navbar-light.html" data-i18n="nav.navbars.nav_light">Navbar Light</a>
+                    <li><a class="menu-item" href="navbar-light.html" data-i18n="nav.navbars.nav_light">{{ __('Apostas') }}</a>
                     </li>
-                    <li><a class="menu-item" href="navbar-dark.html" data-i18n="nav.navbars.nav_dark">Navbar Dark</a>
+                    <li><a class="menu-item" href="navbar-dark.html" data-i18n="nav.navbars.nav_dark">{{ __('Saques') }}</a>
                     </li>
-                    <li><a class="menu-item" href="navbar-semi-dark.html" data-i18n="nav.navbars.nav_semi">Navbar Semi Dark</a>
-                    </li>
-                    <li><a class="menu-item" href="navbar-brand-center.html" data-i18n="nav.navbars.nav_brand_center">Brand Center</a>
-                    </li>
-                    <li><a class="menu-item" href="navbar-fixed-top.html" data-i18n="nav.navbars.nav_fixed_top">Fixed Top</a>
+                    <li><a class="menu-item" href="navbar-semi-dark.html" data-i18n="nav.navbars.nav_semi">{{ __('Depósitos') }}</a>
                     </li>
                 </ul>
             </li>
